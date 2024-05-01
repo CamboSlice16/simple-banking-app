@@ -6,6 +6,8 @@ pipeline {
     stages {
         stage(build) {
             steps {
+                sh 'source ./.bashrc'
+                sh 'pwd'
                 sh 'cd app'
                 sh 'gradle build'
             }
