@@ -6,9 +6,8 @@ pipeline {
     stages {
         stage(build) {
             steps {
-                echo "[OUTPUT] Pipeline in Build stage"
-                cd app
-                gradle build
+                sh 'cd app'
+                sh 'gradle build'
             }
         }
     }
