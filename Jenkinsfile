@@ -1,4 +1,4 @@
-pipeline:
+pipeline {
     agent any
     options {
         timeout(time: 12, unit: 'HOURS')
@@ -10,3 +10,4 @@ pipeline:
             }
         }
     }
+}
