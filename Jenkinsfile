@@ -6,7 +6,7 @@ pipeline:
     stages {
         stage(build) {
             steps {
-                gradle build
+                echo "Pipeline in Build stage"
             }
         }
     }
