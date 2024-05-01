@@ -21,7 +21,7 @@ dependencies {
     implementation libs.guava
 }
 
-/*testing {
+testing {
     suites {
         // Configure the built-in test suite
         test {
@@ -29,12 +29,12 @@ dependencies {
             useJUnitJupiter('5.10.1')
         }
     }
-}*/
-
-dependencies {
-    testImplementation 'org.junit:junit-bom:5.10.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
+
+/*dependencies {
+    testImplementation 'org.junit:junit-bom:5.10.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}*/
 
 // Apply a specific Java toolchain to ease working on different environments.
 java {
