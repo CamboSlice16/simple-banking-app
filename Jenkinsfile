@@ -6,11 +6,11 @@ pipeline {
     stages {
         stage(build) {
             steps {
-                sh 'pwd'
-                sh 'ls -lah'
-                sh 'source .bashrc'
-                sh 'cd app'
-                sh 'gradle build'
+                sh '''
+                    . ./.bashrc
+                    cd app
+                    gradle build
+                '''
             }
         }
     }
