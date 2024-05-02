@@ -1,7 +1,5 @@
 # To set up Jenkins server environment
 
-export PATH='/bin:/usr/bin:{$PATH}'
-export PATH='/sbin:/usr/sbin:{$PATH}'
-export PATH='/opt/gradle/gradle-8.7/bin:${PATH}'
+export PATH='/bin:/usr/bin:/sbin:/usr/sbin:/opt/gradle/gradle-8.7/bin'
 
 # export JAVA_HOME='/usr/bin/java'
