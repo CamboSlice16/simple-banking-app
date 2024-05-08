@@ -2,6 +2,7 @@ package com.camdyn.simplebankingapp.datastructure;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,8 +11,9 @@ import jakarta.persistence.Table;
 public class Transaction {
 
     @Id
+    @GeneratedValue
     @Column(name="transaction_id")
-    private long id;
+    private Long id;
 
     @Column(name="transaction_type")
     private String type;
@@ -27,4 +29,9 @@ public class Transaction {
 
     @Column(name="account_from")
     private String account_from_id;
+
+    @Override
+    public String toString() {
+        return "Transaction [id: " + id + ", Type: " + type + "Amount: " + amount + "To: " + account_to_id + "From: " + account_from_id + "]";
+    }
 }
