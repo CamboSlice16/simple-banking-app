@@ -60,6 +60,10 @@ public class Transaction {
 
     // Setters
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setType(String type) {
         this.type = type;
     }

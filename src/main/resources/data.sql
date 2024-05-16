@@ -4,4 +4,4 @@ INSERT INTO accounts (account_id, account_type, account_balance) VALUES (3, 'sav
 
 INSERT INTO transactions (transaction_id, transaction_type, amount, account_to) VALUE (1, 'deposit', 1500.00, 3);
 INSERT INTO transactions (transaction_id, transaction_type, amount, account_from) VALUE (2, 'withdraw', 215.45, 1);
-INSERT INTO transactions (transaction_id, transaction_type, amount, account_to, account_from) VALUE (3, 'transfer', 1, 3, 450.00);
+INSERT INTO transactions (transaction_id, transaction_type, amount, account_to, account_from) VALUE (3, 'transfer', 450.00, 1, 3);

@@ -4,12 +4,13 @@
 # @TODO: Mount sample date to DB with scripts (use `-v` to mount)
 
 docker run --rm \
-    --name mysql-db \
+    --name mysql \
     -p 3306:3306 \
     -e MYSQL_ROOT_PASSWORD=password \
     mysql
 
 
 ## MySQL commonds of interest:
+#   - mysql -u root -p
 #   - `CREATE DATABASE $db_name`
 #   - `USE $db_name`

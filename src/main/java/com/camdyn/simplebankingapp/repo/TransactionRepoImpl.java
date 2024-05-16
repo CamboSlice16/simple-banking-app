@@ -7,7 +7,7 @@ import jakarta.transaction.Transactional;
 
 public class TransactionRepoImpl implements TransactionRepo {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public TransactionRepoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
