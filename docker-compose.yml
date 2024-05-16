@@ -1,0 +1,14 @@
+services:
+  mysql:
+    build:
+      context: ./db
+      dockerfile: ./Dockerfile
+    ports:
+      - "3306:3306"
+    networks:
+      - banking-net
+    volumes:
+      - ./db/sql_scripts:/repo/scripts
+
+networks:
+  banking-net:

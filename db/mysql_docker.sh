@@ -6,6 +6,7 @@
 docker run --rm \
     --name mysql \
     -p 3306:3306 \
+    -v /home/camdyn/Sandbox/simple-banking-app/tools:/repo/tools \
     -e MYSQL_ROOT_PASSWORD=password \
     mysql
 

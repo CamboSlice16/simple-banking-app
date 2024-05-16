@@ -2,30 +2,33 @@ package com.camdyn.simplebankingapp.repo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.camdyn.simplebankingapp.datastructure.Transaction;
 
-@DataJpaTest
+@ExtendWith(MockitoExtension.class)
 public class TransactionRepoImplTest {
 
-    @Autowired
-    private TestEntityManager entityManager;
+    @Mock
+    private TransactionRepoImpl repository;
 
-    @Autowired
-    private TransactionRepo repository;
-
-    @Test
-    public void testTransactionSave() {
+    private Transaction mockTransaction() {
         Transaction transaction = new Transaction();
+        transaction.setId((long) 1);
         transaction.setType("transfer");
         transaction.setAmount(500.00);
         transaction.setAccountToId((long) 101);
         transaction.setAccountFromId((long) 102);
-        
-        entityManager.persist(transaction);
+
+        return transaction;
+    }
+
+    @Test
+    public void testTransactionSave() {
+        Transaction transaction = mockTransaction();
+        repository.save(transaction);
 
         Transaction dbTransaction = repository.getTransactionById(transaction.getId());
 
