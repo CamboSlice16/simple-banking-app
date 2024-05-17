@@ -22,10 +22,10 @@ public class Account {
     private float balance;
 
     @Column(name="owner_id")
-    private String ownerId;
+    private String owner;
 
     @Override
     public String toString() {
-        return "Account [id: " + id + ", Type: " + type + "Balance: " + balance + "Owner ID: " + ownerId + "]";
+        return "Account [id: " + id + ", Type: " + type + "Balance: " + balance + "Owner: " + owner + "]";
     }
 }

@@ -1,11 +1,21 @@
 CREATE DATABASE banking_database;
 USE banking_database;
 
+CREATE TABLE users (
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL DEFAULT 'TempPassword0',
+    first_name VARCHAR(255) NOT NULL DEFAULT '',
+    last_name VARCHAR(255) NOT NULL DEFAULT '',
+    PRIMARY KEY (username)
+)
+
 CREATE TABLE accounts (
     account_id BIGINT NOT NULL AUTO_INCREMENT,
     account_type VARCHAR(255) NOT NULL DEFAULT '',
     account_balance FLOAT NOT NULL DEFAULT 0.0,
-    PRIMARY KEY (account_id)
+    owner_id VARCHAR(255) NOT NULL,
+    PRIMARY KEY (account_id),
+    FOREIGN KEY (owner_id) REFERENCES users(username)
 );
 
 CREATE TABLE transactions (
@@ -19,10 +29,12 @@ CREATE TABLE transactions (
     FOREIGN KEY (account_from) REFERENCES accounts(account_id)
 );
 
-INSERT INTO accounts (account_id, account_type, account_balance) VALUES (1, 'checking', 1500.58);
-INSERT INTO accounts (account_id, account_type, account_balance) VALUES (2, 'savings', 34668.02);
-INSERT INTO accounts (account_id, account_type, account_balance) VALUES (3, 'savings', 3450.45);
+INSERT INTO users (username, password, first_name, last_name) VALUES ('cam_ash', 'pa$$w0rd', 'Camdyn', 'Ashcraft');
 
-INSERT INTO transactions (transaction_id, transaction_type, amount, account_to) VALUE (1, 'deposit', 1500.00, 3);
-INSERT INTO transactions (transaction_id, transaction_type, amount, account_from) VALUE (2, 'withdraw', 215.45, 1);
-INSERT INTO transactions (transaction_id, transaction_type, amount, account_to, account_from) VALUE (3, 'transfer', 450.00, 1, 3);
+INSERT INTO accounts (account_type, account_balance, owner_id) VALUES ('checking', 1500.58, 'cam_ash');
+INSERT INTO accounts (account_type, account_balance, owner_id) VALUES ('savings', 34668.02, 'cam_ash');
+INSERT INTO accounts (account_type, account_balance, owner_id) VALUES ('savings', 3450.45, 'cam_ash');
+
+INSERT INTO transactions (transaction_type, amount, account_to) VALUE ('deposit', 1500.00, 3);
+INSERT INTO transactions (transaction_type, amount, account_from) VALUE ('withdraw', 215.45, 1);
+INSERT INTO transactions (transaction_type, amount, account_to, account_from) VALUE ('transfer', 450.00, 1, 3);
