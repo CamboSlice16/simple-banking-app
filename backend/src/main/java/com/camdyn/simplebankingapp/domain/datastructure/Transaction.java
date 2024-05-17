@@ -7,6 +7,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * JPA Entity class for Transaction object
+ * @author camdyn
+ */
+
 @Entity
 @Table(name="transactions")
 public class Transaction {
