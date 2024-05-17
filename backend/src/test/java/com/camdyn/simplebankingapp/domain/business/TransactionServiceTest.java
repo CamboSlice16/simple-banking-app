@@ -1,5 +1,6 @@
 package com.camdyn.simplebankingapp.domain.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,9 +17,18 @@ public class TransactionServiceTest {
     private TransactionService transactionService;
 
     @Test
-    public void testFindAllTransactions() {
-        List<Transaction> transactions = transactionService.findAllTransactions();
+    public void testCrudServices() {
 
-        assertEquals(transactions.size(), 3);
+        List<Transaction> test = new ArrayList<>();
+
+        transactionService.deleteAll();
+
+        test.add(transactionService.createDeposit(100.00, 1));
+        test.addAll(transactionService.createTransfer(100.00, 1, 2));
+        test.add(transactionService.createWithdrawal(100.00, 2));
+
+        List<Transaction> db = transactionService.findAllTransactions();
+
+        assertEquals(db.size(), test.size());
     }
 }

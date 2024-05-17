@@ -1,5 +1,6 @@
 package com.camdyn.simplebankingapp.domain.business;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +35,17 @@ class TransactionService {
         return transactionRepo.save(new Transaction(Transaction.TransactionType.DEPOSIT, amount, account_to_id));
     }
 
+    public Transaction createWithdrawal(double amount, long account_from_id) {
+        return transactionRepo.save(new Transaction(Transaction.TransactionType.WITHDRAWAL, -amount, account_from_id));
+    }
+
+    public List<Transaction> createTransfer(double amount, long account_to_id, long account_from_id) {
+        List<Transaction> t = new ArrayList<>();
+        t.add(createDeposit(amount, account_to_id));
+        t.add(createWithdrawal(-amount, account_from_id));
+        return t;
+    }
+
     // Read
 
     public List<Transaction> findAllTransactions() {
@@ -62,7 +74,7 @@ class TransactionService {
         try {
             transactionRepo.deleteAll();
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 }

@@ -19,41 +19,29 @@ public class Transaction {
     @Column(name="transaction_type")
     private String type;
 
-    // @Column(name="transaction_date")
+    // @Column(name="timestamp")
     // private Date date;
 
     @Column(name="amount")
     private double amount;
 
-    @Column(name="account_to")
-    private Long account_to_id;
-
-    @Column(name="account_from")
-    private Long account_from_id;
+    @Column(name="account_id")
+    private Long account_id;
 
     @Override
     public String toString() {
-        return "Transaction [id: " + id + ", Type: " + type + "Amount: " + amount + "To: " + account_to_id + "From: " + account_from_id + "]";
+        return "Transaction [id: " + id + ", Type: " + type + "Amount: " + amount + "To: " + account_id + "]";
     }
 
     // Constructors
 
+    public Transaction(TransactionType type, double amount, long account_id) {
+        this.amount = amount;
+        this.account_id = account_id;
+        this.type = type.label;
+    }
+
     public Transaction() {}
-
-    // For Deposits & Withdrawals
-    public Transaction(TransactionType type, double amount, long account_to_id) {
-        this.amount = amount;
-        this.account_to_id = account_to_id;
-        this.type = type.label;
-    }
-
-    // For Transfers
-    public Transaction(TransactionType type, double amount, long account_to_id, long account_from_id) {
-        this.amount = amount;
-        this.account_to_id = account_to_id;
-        this.account_from_id = account_from_id;
-        this.type = type.label;
-    }
 
     // Enum
 
@@ -83,12 +71,8 @@ public class Transaction {
         return amount;
     }
 
-    public Long getAccountToId() {
-        return account_to_id;
-    }
-
-    public Long getAccountFromId() {
-        return account_from_id;
+    public Long getAccountId() {
+        return account_id;
     }
 
     // Setters
@@ -105,11 +89,7 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public void setAccountToId(Long id) {
-        account_to_id = id;
-    }
-
-    public void setAccountFromId(Long id) {
-        account_from_id = id;
+    public void setAccountId(Long id) {
+        account_id = id;
     }
 }
