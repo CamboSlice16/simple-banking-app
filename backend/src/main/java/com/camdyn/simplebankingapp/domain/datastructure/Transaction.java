@@ -44,7 +44,7 @@ public class Transaction {
     public Transaction(TransactionType type, double amount, long account_to_id) {
         this.amount = amount;
         this.account_to_id = account_to_id;
-        this.type = accountEnumToString(type);
+        this.type = type.label;
     }
 
     // For Transfers
@@ -52,27 +52,21 @@ public class Transaction {
         this.amount = amount;
         this.account_to_id = account_to_id;
         this.account_from_id = account_from_id;
-        this.type = accountEnumToString(type);
+        this.type = type.label;
     }
 
     // Enum
 
     public enum TransactionType {
-        DEPOSIT,
-        WITHDRAWAL,
-        TRANSFER
-    }
+        DEPOSIT("deposit"),
+        WITHDRAWAL("withdrawal"),
+        TRANSFER("transfer");
 
-    public String accountEnumToString(TransactionType type) {
-        String string = "";
+        public final String label;
 
-        switch(type) {
-            case DEPOSIT -> string = "deposit";
-            case WITHDRAWAL -> string = "withdrawal";
-            case TRANSFER -> string = "transfer";
+        private TransactionType(String label) {
+            this.label = label;
         }
-
-        return string;
     }
 
     // Getters

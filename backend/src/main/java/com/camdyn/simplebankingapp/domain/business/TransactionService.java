@@ -57,4 +57,12 @@ class TransactionService {
     // Update
 
     // Delete
+
+    public void deleteAll() {
+        try {
+            transactionRepo.deleteAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
