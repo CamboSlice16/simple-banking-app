@@ -1,4 +1,4 @@
-package com.camdyn.simplebankingapp.datastructure;
+package com.camdyn.simplebankingapp.domain.datastructure;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,6 +34,45 @@ public class Transaction {
     @Override
     public String toString() {
         return "Transaction [id: " + id + ", Type: " + type + "Amount: " + amount + "To: " + account_to_id + "From: " + account_from_id + "]";
+    }
+
+    // Constructors
+
+    public Transaction() {}
+
+    // For Deposits & Withdrawals
+    public Transaction(TransactionType type, double amount, long account_to_id) {
+        this.amount = amount;
+        this.account_to_id = account_to_id;
+        this.type = accountEnumToString(type);
+    }
+
+    // For Transfers
+    public Transaction(TransactionType type, double amount, long account_to_id, long account_from_id) {
+        this.amount = amount;
+        this.account_to_id = account_to_id;
+        this.account_from_id = account_from_id;
+        this.type = accountEnumToString(type);
+    }
+
+    // Enum
+
+    public enum TransactionType {
+        DEPOSIT,
+        WITHDRAWAL,
+        TRANSFER
+    }
+
+    public String accountEnumToString(TransactionType type) {
+        String string = "";
+
+        switch(type) {
+            case DEPOSIT -> string = "deposit";
+            case WITHDRAWAL -> string = "withdrawal";
+            case TRANSFER -> string = "transfer";
+        }
+
+        return string;
     }
 
     // Getters

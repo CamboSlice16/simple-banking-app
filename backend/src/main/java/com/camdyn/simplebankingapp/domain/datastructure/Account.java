@@ -1,4 +1,4 @@
-package com.camdyn.simplebankingapp.datastructure;
+package com.camdyn.simplebankingapp.domain.datastructure;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
