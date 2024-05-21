@@ -25,6 +25,17 @@ public class User {
     @Column(name="last_name")
     private String lastName;
 
+    // Constructors
+
+    public User(String username, String password, String firstName, String lastName) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public User() {}
+
     @Override
     public String toString() {
         return "Account [User ID: " + userId + "Username: " + username + "Password: " + protectPassword() + ", First: " + firstName + "Last: " + lastName + "]";

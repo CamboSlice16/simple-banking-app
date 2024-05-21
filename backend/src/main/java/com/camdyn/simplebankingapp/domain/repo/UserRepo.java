@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 import com.camdyn.simplebankingapp.domain.datastructure.User;
 
 @Component
-public interface UserRepo extends JpaRepository<User, String> {
+public interface UserRepo extends JpaRepository<User, Long> {
     
 }
