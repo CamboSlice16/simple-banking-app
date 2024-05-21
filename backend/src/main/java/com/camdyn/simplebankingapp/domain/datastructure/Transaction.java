@@ -18,10 +18,10 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="transaction_id")
+    @Column(name="id")
     private Long id;
 
-    @Column(name="transaction_type")
+    @Column(name="type")
     private String type;
 
     // @Column(name="timestamp")
@@ -32,11 +32,6 @@ public class Transaction {
 
     @Column(name="account_id")
     private Long account_id;
-
-    @Override
-    public String toString() {
-        return "Transaction [id: " + id + ", Type: " + type + "Amount: " + amount + "To: " + account_id + "]";
-    }
 
     // Constructors
 
@@ -96,5 +91,12 @@ public class Transaction {
 
     public void setAccountId(Long id) {
         account_id = id;
+    }
+
+    // Misc
+
+    @Override
+    public String toString() {
+        return "Transaction [id: " + id + ", Type: " + type + "Amount: " + amount + "To: " + account_id + "]";
     }
 }

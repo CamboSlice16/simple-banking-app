@@ -10,8 +10,8 @@ import jakarta.persistence.Table;
 public class User {
 
     @Id
-    @Column(name="user_id")
-    private Long userId;
+    @Column(name="id")
+    private Long id;
 
     @Column(name="username")
     private String username;
@@ -36,9 +36,55 @@ public class User {
 
     public User() {}
 
+    // Getters
+
+    public long getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    // Setters
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    // Misc
+
     @Override
     public String toString() {
-        return "Account [User ID: " + userId + "Username: " + username + "Password: " + protectPassword() + ", First: " + firstName + "Last: " + lastName + "]";
+        return "Account [User ID: " + id + "Username: " + username + "Password: " + protectPassword() + ", First: " + firstName + "Last: " + lastName + "]";
     }
 
     // Really just to get rid of warning flags in VSCode...
