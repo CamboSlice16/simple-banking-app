@@ -17,7 +17,7 @@ import com.camdyn.simplebankingapp.domain.repo.UserRepo;
  */
 
 @Repository
-class TransactionService {
+public class TransactionService {
 
     private final TransactionRepo transactionRepo;
     // private final AccountRepo accountRepo;
@@ -62,7 +62,7 @@ class TransactionService {
     }
 
     // TODO
-    public List<Transaction> findByUserId(long id) {
+    public List<Transaction> findByAccountId(long id) {
         return null;
     }
 
@@ -75,6 +75,14 @@ class TransactionService {
             transactionRepo.deleteAll();
         } catch (Exception e) {
             // e.printStackTrace();
+        }
+    }
+
+    public void deleteTransaction(long id) {
+        try {
+            transactionRepo.deleteById(id);
+        } catch (Exception e) {
+            // e.printStachTrace();
         }
     }
 }
