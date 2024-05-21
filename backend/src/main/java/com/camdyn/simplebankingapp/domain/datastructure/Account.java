@@ -13,7 +13,7 @@ public class Account {
     @Id
     @GeneratedValue
     @Column(name="id")
-    private Long id;
+    private long id;
 
     @Column(name="type")
     private String type;
@@ -22,7 +22,7 @@ public class Account {
     private float balance;
 
     @Column(name="owner_id")
-    private Long owner;
+    private long owner;
 
     // Constructors
 

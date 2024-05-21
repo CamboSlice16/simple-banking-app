@@ -19,7 +19,7 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="id")
-    private Long id;
+    private long id;
 
     @Column(name="type")
     private String type;
@@ -31,13 +31,13 @@ public class Transaction {
     private double amount;
 
     @Column(name="account_id")
-    private Long account_id;
+    private long accountId;
 
     // Constructors
 
-    public Transaction(TransactionType type, double amount, long account_id) {
+    public Transaction(TransactionType type, double amount, long accountId) {
         this.amount = amount;
-        this.account_id = account_id;
+        this.accountId = accountId;
         this.type = type.label;
     }
 
@@ -72,7 +72,7 @@ public class Transaction {
     }
 
     public Long getAccountId() {
-        return account_id;
+        return accountId;
     }
 
     // Setters
@@ -89,14 +89,14 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public void setAccountId(Long id) {
-        account_id = id;
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 
     // Misc
 
     @Override
     public String toString() {
-        return "Transaction [id: " + id + ", Type: " + type + "Amount: " + amount + "To: " + account_id + "]";
+        return "Transaction [id: " + id + ", Type: " + type + "Amount: " + amount + "To: " + accountId + "]";
     }
 }
