@@ -29,6 +29,6 @@ public class TransactionServiceTest {
 
         List<Transaction> db = transactionService.findAllTransactions();
 
-        assertEquals(db.size(), test.size());
+        assertEquals(test.size(), db.size());
     }
 }

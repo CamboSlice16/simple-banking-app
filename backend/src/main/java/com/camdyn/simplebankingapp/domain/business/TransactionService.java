@@ -36,7 +36,7 @@ public class TransactionService {
     }
 
     public Transaction createWithdrawal(double amount, long account_from_id) {
-        return transactionRepo.save(new Transaction(Transaction.TransactionType.WITHDRAWAL, -amount, account_from_id));
+        return transactionRepo.save(new Transaction(Transaction.TransactionType.WITHDRAWAL, amount, account_from_id));
     }
 
     public List<Transaction> createTransfer(double amount, long account_to_id, long account_from_id) {
@@ -61,9 +61,8 @@ public class TransactionService {
         return t.get();
     }
 
-    // TODO
     public List<Transaction> findByAccountId(long id) {
-        return null;
+        return transactionRepo.findByAccountId(id);
     }
 
     // Update

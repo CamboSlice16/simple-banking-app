@@ -59,7 +59,7 @@ public class Transaction {
 
     // Getters
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -71,13 +71,13 @@ public class Transaction {
         return amount;
     }
 
-    public Long getAccountId() {
+    public long getAccountId() {
         return accountId;
     }
 
     // Setters
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -89,7 +89,7 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public void setAccountId(Long accountId) {
+    public void setAccountId(long accountId) {
         this.accountId = accountId;
     }
 

@@ -11,8 +11,9 @@ import com.camdyn.simplebankingapp.domain.datastructure.Transaction;
  * @author camdyn
  */
 
+// @RepositoryRestResource(path="transaction", collectionResourceRel="transaction")
 public interface TransactionRepo extends JpaRepository<Transaction, Long> {
 
-    List<Transaction> findByAccountId(Long accountId);
-    
+    List<Transaction> findByAccountId(long id);
+
 }

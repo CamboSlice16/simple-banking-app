@@ -19,7 +19,7 @@ public class Account {
     private String type;
 
     @Column(name="balance")
-    private float balance;
+    private double balance;
 
     @Column(name="owner_id")
     private long owner;
@@ -32,7 +32,7 @@ public class Account {
         this.balance = (float) 0.00;
     }
 
-    public Account(String type, float balance, long owner) {
+    public Account(String type, double balance, long owner) {
         this.type = type;
         this.balance = balance;
         this.owner = owner;
@@ -64,7 +64,7 @@ public class Account {
         return type;
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
@@ -93,11 +93,11 @@ public class Account {
 
     // Misc
 
-    public void subtractBalance(float diff) {
+    public void subtractBalance(double diff) {
         balance -= diff;
     }
 
-    public void addBalance(float diff) {
+    public void addBalance(double diff) {
         balance += diff;
     }
 

@@ -47,7 +47,7 @@ public class AccountService {
 
     // Update
 
-    public void subtractBalance(long id, float diff) {
+    public void subtractBalance(long id, double diff) {
         try {
             Account a = FindById(id);
             a.subtractBalance(diff);
@@ -57,7 +57,7 @@ public class AccountService {
         }
     }
 
-    public void addBalance(long id, float diff) {
+    public void addBalance(long id, double diff) {
         try {
             Account a = FindById(id);
             a.addBalance(diff);
