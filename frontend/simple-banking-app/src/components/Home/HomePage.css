@@ -1,0 +1,6 @@
+.btn-group button {
+    display: block;
+    cursor: pointer;
+    width: 10%;
+    text-align: center;
+}

@@ -1,5 +1,7 @@
 import './BankingApp.css'
 
+import * as Constants from '../../common/Constants'
+
 import HeaderComponent from '../../common/Header/HeaderComponent'
 import FooterComponent from '../../common/Footer/FooterComponent'
 import LoginPage from '../Login/LoginPage'
@@ -12,8 +14,8 @@ const BankingApp = () => {
             <BrowserRouter>
                 <HeaderComponent />
                 <Routes>
-                    <Route path='/' element={ <HomePage /> } />
-                    <Route path='/login' element={ <LoginPage /> } />
+                    <Route path={Constants.HOME_PAGE_URL} element={ <HomePage /> } />
+                    <Route path={Constants.LOGIN_PAGE_URL} element={ <LoginPage /> } />
                 </Routes>
                 <FooterComponent />
             </BrowserRouter>
