@@ -1,8 +1,9 @@
+// Lists Accounts for the logged in user
+// Located on Home Page
 
+// TODO: Styling!
 
 const ListAccountComponent = ({accounts}) => {
-
-
     return (
         <div>
             <table>

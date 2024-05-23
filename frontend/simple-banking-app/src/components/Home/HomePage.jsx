@@ -26,12 +26,17 @@ const HomePage = () => {
         {id: 3, name: "EMERGENCY FUND", type: "savings", balance: 3450.45, owner_id: 1}
     ]
 
+    // TODO: Get real account data
+    // TODO: Get real User ID
+
     return (
         <div>
             <h1>Welcome!</h1>
-            <div display="inline-block">
+            <div>
+                <div class="tbl-group">
                 { accounts.length == 0 ? "You don't have any accounts open." :
                 <ListAccountComponent accounts={accounts} />}
+                </div>
                 <div class="btn-group">
                     <button name="deposit" type="button" onClick={handleDeposit}>Deposit</button>
                     <button name="withdrawal" type="button" onClick={handleWithdrawal}>Withdrawal</button>
