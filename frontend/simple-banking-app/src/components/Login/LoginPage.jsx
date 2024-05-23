@@ -24,7 +24,7 @@ const LoginPage = () => {
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type="text" name="password" value={password} onChange={handlePasswordChange} />
+                    <input type="password" name="password" value={password} onChange={handlePasswordChange} />
                 </div>
                 <div>
                     <button type="submit" name="login" onClick={handleSubmit}>Log in</button>

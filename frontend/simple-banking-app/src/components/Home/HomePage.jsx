@@ -33,11 +33,11 @@ const HomePage = () => {
         <div>
             <h1>Welcome!</h1>
             <div>
-                <div class="tbl-group">
+                <div className="tbl-group">
                 { accounts.length == 0 ? "You don't have any accounts open." :
                 <ListAccountComponent accounts={accounts} />}
                 </div>
-                <div class="btn-group">
+                <div className="btn-group">
                     <button name="deposit" type="button" onClick={handleDeposit}>Deposit</button>
                     <button name="withdrawal" type="button" onClick={handleWithdrawal}>Withdrawal</button>
                     <button name="transfer" type="button" onClick={handleTransfer}>Transfer</button>
