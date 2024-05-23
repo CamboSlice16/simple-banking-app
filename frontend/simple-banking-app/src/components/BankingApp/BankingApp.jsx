@@ -10,6 +10,7 @@ import LoginPage from '../Login/LoginPage'
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import WithdrawalPage from '../Withdrawal/WithdrawalPage'
+import TransferPage from '../Transfer/TransferPage'
 
 const BankingApp = () => {
     return (
@@ -21,6 +22,7 @@ const BankingApp = () => {
                     <Route path={Constants.LOGIN_PAGE_URL} element={ <LoginPage /> } />
                     <Route path={Constants.DEPOSIT_PAGE_URL} element={ <DepositPage /> } />
                     <Route path={Constants.WITHDRAWAL_PAGE_URL} element={ <WithdrawalPage /> } />
+                    <Route path={Constants.TRANSFER_PAGE_URL} element={ <TransferPage /> } />
                 </Routes>
                 <FooterComponent />
             </BrowserRouter>
