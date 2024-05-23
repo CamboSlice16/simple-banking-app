@@ -1,11 +1,11 @@
-import './DepositPage.css'
+import './WithdrawalPage.css'
 
 import { HOME_PAGE_URL } from '../../common/Constants'
 
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const DepositPage = () => {
+const WithdrawalPage = () => {
     const [amount, setAmount] = useState('0.00')
     const [submitted, setSubmitted] = useState(false)
     const navigate = useNavigate()
@@ -16,7 +16,7 @@ const DepositPage = () => {
     const handleGoBack = () => navigate(HOME_PAGE_URL)
 
     const handleSubmit = () => {
-        console.log("Deposit successful!")
+        console.log("Withdrawal successful!")
         setSubmitted(submitted => !submitted)
     }
 
@@ -29,11 +29,11 @@ const DepositPage = () => {
     ]
 
     // TODO: Get real account list
-    // TODO: POST request for deposit
+    // TODO: POST request for withdrawal
 
     return (
         <div>
-            <h1>Deposit Form</h1>
+            <h1>Withdrawal Form</h1>
             <form>
                 <div>
                     <label htmlFor="account">Select Account:</label>
@@ -52,15 +52,15 @@ const DepositPage = () => {
                     <input type="number" id="amount" value={amount} onChange={handleAmountChange} />
                 </div>
                 <div>
-                    <button type="button" name="submit-deposit" onClick={handleSubmit}>Submit Deposit</button>
+                    <button type="button" name="submit-withdrawal" onClick={handleSubmit}>Submit Withdrawal</button>
                 </div>
             </form>
             <div display="block">
-                {submitted == true ? <h2>Deposit processed!</h2> : ""}
+                {submitted == true ? <h2>Withdrawal processed!</h2> : ""}
                 <button type="button" name="go-back" onClick={handleGoBack}>Go Back</button>
             </div>
         </div>
     )
 }
 
-export default DepositPage;
+export default WithdrawalPage;
