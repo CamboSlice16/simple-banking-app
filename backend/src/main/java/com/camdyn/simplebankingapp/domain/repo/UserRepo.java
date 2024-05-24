@@ -8,4 +8,5 @@ import com.camdyn.simplebankingapp.domain.datastructure.User;
 @Component
 public interface UserRepo extends JpaRepository<User, Long> {
     
+    User findByUsername(String username);
 }

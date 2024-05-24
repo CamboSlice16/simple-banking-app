@@ -6,4 +6,4 @@ export const addWithdrawal = (amount, accountId) => apiClient.post('transaction/
 export const addTransfer = (amount, accountFrom, accountTo) => apiClient.post('transaction/transfer')
 
 // Accounts
-export const getAccountsForUser = (id) => apiClient.get('/user/${id}')
+export const getAccountsForUser = (username) => apiClient.get('/accounts/${username}')

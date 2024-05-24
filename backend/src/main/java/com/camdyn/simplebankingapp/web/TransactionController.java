@@ -36,7 +36,7 @@ public class TransactionController {
 //        return transactionService.findById(id);
 //    }
 
-// @PostMapping("/transaction/transfer")
+// @GetMapping("/transaction/transfer")
 // public List<Transaction> postTransfer(@RequestBody List<Transaction> request) {
 //     try {
 //         for (Transaction t : request) {
@@ -57,7 +57,7 @@ public class TransactionController {
 //     return request;
 // }
 
-// @PostMapping("/transaction/deposit")
+// @GetMapping("/transaction/deposit")
 // public ResponseEntity<Transaction> postDeposit(@RequestBody Transaction request) {
 //     try {
 //         Transaction t = transactionService.createDeposit(request.getAmount(), request.getAccountId());
