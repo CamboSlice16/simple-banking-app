@@ -1,75 +1,49 @@
 package com.camdyn.simplebankingapp.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.camdyn.simplebankingapp.domain.business.AccountService;
-import com.camdyn.simplebankingapp.domain.business.TransactionService;
+import com.camdyn.simplebankingapp.domain.datastructure.Transaction;
+import com.camdyn.simplebankingapp.domain.repo.AccountRepo;
+import com.camdyn.simplebankingapp.domain.repo.TransactionRepo;
+
+
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/transaction")
 public class TransactionController {
 
     @Autowired
-    private final TransactionService transactionService;
+    private final TransactionRepo transactionRepo;
 
     @Autowired
-    private final AccountService accountService;
+    private final AccountRepo accountRepo;
 
-    public TransactionController(TransactionService transactionService, AccountService accountService) {
-        this.transactionService = transactionService;
-        this.accountService = accountService;
+    public TransactionController(TransactionRepo transactionRepo, AccountRepo accountRepo) {
+        this.transactionRepo = transactionRepo;
+        this.accountRepo = accountRepo;
     }
 
-//    @GetMapping("/transactions")
-//    public String getTransactionsByAccountId(@RequestParam long id) {
-//        //TODO: process POST request
-//        
-//        return null;
-//    }
+    // public ResponseEntity<Transaction> postDeposit(@RequestBody Transaction transaction) {
+    @PostMapping("/deposit")
+    public ResponseEntity postDeposit(@RequestBody Transaction transaction) {
+        transaction.setType(Transaction.TransactionType.DEPOSIT.label);
+        transactionRepo.save(transaction);
+        // TODO: Add money to account balance
+        // URI nextUri = ServletUriComponentsBuilder.fromCurrentRequest()
+        //                                          .path("/{id}")
+        //                                          .buildAndExpand(transaction.getId())
+        //                                          .toUri();
+        // return ResponseEntity.created(nextUri).build();
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
     
-
-//    @GetMapping("/transactions/${id}")
-//    public Transaction getTransaction(@PathVariable Long id) {
-//        return transactionService.findById(id);
-//    }
-
-// @GetMapping("/transaction/transfer")
-// public List<Transaction> postTransfer(@RequestBody List<Transaction> request) {
-//     try {
-//         for (Transaction t : request) {
-//             switch (t.getType()) {
-//                 case Transaction.TransactionType.DEPOSIT.label:
-//                     break;
-//                 case Transaction.TransactionType.WITHDRAWAL.label:
-//                     break;
-//                 default:
-//                     System.out.println("Something went wrong...");
-//             }
-//             
-//         }
-//     } catch (Exception e) {
-//         // e.printStackTrace();
-//     }
-//     
-//     return request;
-// }
-
-// @GetMapping("/transaction/deposit")
-// public ResponseEntity<Transaction> postDeposit(@RequestBody Transaction request) {
-//     try {
-//         Transaction t = transactionService.createDeposit(request.getAmount(), request.getAccountId());
-//         accountService.addBalance(t.getAccountId(), t.getAmount());
-// 
-//         return ResponseEntity.created();
-//     } catch (Exception e) {
-//         // e.printStackTrace();
-//         return null;
-//     }
-// }
-
-
-
 }
