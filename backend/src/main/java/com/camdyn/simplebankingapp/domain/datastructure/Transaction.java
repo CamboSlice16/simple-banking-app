@@ -44,6 +44,13 @@ public class Transaction {
         this.type = type.label;
     }
 
+    public Transaction(TransactionType type, double amount, long accountId, String description) {
+        this.amount = amount;
+        this.accountId = accountId;
+        this.type = type.label;
+        this.description = description;
+    }
+
     public Transaction() {}
 
     // Enum

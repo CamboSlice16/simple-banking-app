@@ -15,6 +15,7 @@ import com.camdyn.simplebankingapp.domain.datastructure.Account;
 import com.camdyn.simplebankingapp.domain.datastructure.Transaction;
 import com.camdyn.simplebankingapp.domain.repo.AccountRepo;
 import com.camdyn.simplebankingapp.domain.repo.TransactionRepo;
+import com.camdyn.simplebankingapp.usecase.Transfer;
 
 
 
@@ -62,13 +63,51 @@ public class TransactionController {
             throw new Exception("Account does not exist!");
         }
 
-        // Modify/submit deposit
+        // Modify/submit withdrawal
         transaction.setType(Transaction.TransactionType.WITHDRAWAL.label);
         transactionRepo.save(transaction);
 
         // Change balance in existing account
         account.get().subtractBalance(transaction.getAmount());
         accountRepo.save(account.get());
+
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @PostMapping("/transfer")
+    public ResponseEntity postTransfer(@RequestBody Transfer transfer) throws Exception {
+        // Do the accounts exist?
+        Optional<Account> account_to = accountRepo.findById(transfer.getAccountTo());
+        if (account_to.isEmpty()) {
+            throw new Exception("Account To does not exist!");
+        }
+
+        Optional<Account> account_from = accountRepo.findById(transfer.getAccountFrom());
+        if (account_from.isEmpty()) {
+            throw new Exception("Account From does not exist!");
+        }
+
+        // Deposit
+        Transaction deposit = new Transaction(
+            Transaction.TransactionType.DEPOSIT,
+            transfer.getAmount(),
+            transfer.getAccountTo(),
+            "Transfer from Account " + transfer.getAccountFrom());
+        transactionRepo.save(deposit);
+
+        account_to.get().addBalance(transfer.getAmount());
+        accountRepo.save(account_to.get());
+
+        // Withdrawal
+        Transaction withdrawal = new Transaction(
+            Transaction.TransactionType.WITHDRAWAL,
+            transfer.getAmount(),
+            transfer.getAccountFrom(),
+            "Transfer to Account " + transfer.getAccountTo());
+        transactionRepo.save(withdrawal);
+
+        account_from.get().subtractBalance(transfer.getAmount());
+        accountRepo.save(account_from.get());
 
         return ResponseEntity.ok(HttpStatus.OK);
     }
