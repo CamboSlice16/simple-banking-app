@@ -33,6 +33,9 @@ public class Transaction {
     @Column(name="account_id")
     private long accountId;
 
+    @Column(name="description")
+    private String description;
+
     // Constructors
 
     public Transaction(TransactionType type, double amount, long accountId) {
@@ -75,6 +78,10 @@ public class Transaction {
         return accountId;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     // Setters
 
     public void setId(long id) {
@@ -91,6 +98,10 @@ public class Transaction {
 
     public void setAccountId(long accountId) {
         this.accountId = accountId;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     // Misc

@@ -26,6 +26,7 @@ CREATE TABLE transactions (
     amount DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
     account_id BIGINT,
     timestamp TIMESTAMP,
+    description VARCHAR(255) DEFAULT '',
     PRIMARY KEY (id),
     FOREIGN KEY (account_id) REFERENCES accounts(id)
 );
