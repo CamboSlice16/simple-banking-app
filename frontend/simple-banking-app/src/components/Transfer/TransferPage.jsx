@@ -18,7 +18,6 @@ const TransferPage = () => {
         accountTo: accounts[0].id,
         accountFrom: accounts[0].id,
     })
-    const [disableSubmit, setDisableSubmit] = useState(false)
     const [submitted, setSubmitted] = useState(false)
     const [errors, setErrors] = useState([])
     const navigate = useNavigate()
@@ -45,7 +44,6 @@ const TransferPage = () => {
 
         if(errors.length === 0) {
             setSubmitted(submitted => true)
-            setDisableSubmit(disableSubmit => true)
         } else {
             console.log("Errors:", errors)
         }
@@ -56,7 +54,7 @@ const TransferPage = () => {
     return (
         <div>
             <h1>Transfer Form</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="accountTo">Transfer To:</label>
                     <select id="accountTo" onChange={handleAccountToChange}>
@@ -86,7 +84,7 @@ const TransferPage = () => {
                     <input type="number" id="amount" value={formData.amount} onChange={handleAmountChange} />
                 </div>
                 <div>
-                    <button type="button" name="submit-transfer" onClick={handleSubmit} disabled={disableSubmit}>Submit Transfer</button>
+                    <button type="submit" name="submit-transfer" disabled={submitted}>Submit Transfer</button>
                 </div>
             </form>
             <div display="block">

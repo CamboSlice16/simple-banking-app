@@ -13,7 +13,7 @@ const WithdrawalPage = () => {
         {id: 2, name: "Camdyn Savings", type: "savings", balance: 34668.00, owner_id: 1},
         {id: 3, name: "EMERGENCY FUND", type: "savings", balance: 3450.45, owner_id: 1}
     ]
-
+    const [disableSubmit, setDisableSubmit] = useState(false)
     const [formData, setFormdata] = useState({
         amount: 0.00,
         accountId: accounts[0].id,
@@ -29,7 +29,7 @@ const WithdrawalPage = () => {
     const handleAmountChange = (event) => {
         setFormdata((prevState) => ({ ...prevState, amount: event.target.value}))
     }
-    
+
     const handleGoBack = () => navigate(HOME_PAGE_URL)
 
     const handleSubmit = (event) => {
@@ -37,8 +37,13 @@ const WithdrawalPage = () => {
         console.log(formData)
         postWithdrawal(formData)
             .catch(error => setErrors(error))
-        setSubmitted(submitted => !submitted)
-        console.log("Errors:", errors)
+        
+        if(errors.length === 0) {
+            setSubmitted(submitted => true)
+            setDisableSubmit(disableSubmit => true)
+        } else {
+            console.log("Errors:", errors)
+        }
     }
 
     // TODO: Get real account list
@@ -46,7 +51,7 @@ const WithdrawalPage = () => {
     return (
         <div>
             <h1>Withdrawal Form</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="account">Select Account:</label>
                     <select id="account" onChange={handleAccountChange}>
@@ -64,7 +69,7 @@ const WithdrawalPage = () => {
                     <input type="number" id="amount" value={formData.amount} min="0" onChange={handleAmountChange} />
                 </div>
                 <div>
-                    <button type="button" name="submit-withdrawal" onClick={handleSubmit}>Submit Withdrawal</button>
+                    <button type="submit" name="submit-withdrawal" disabled={disableSubmit}>Submit Withdrawal</button>
                 </div>
             </form>
             <div display="block">

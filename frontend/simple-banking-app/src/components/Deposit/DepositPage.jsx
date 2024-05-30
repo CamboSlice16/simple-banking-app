@@ -13,7 +13,6 @@ const DepositPage = () => {
         {id: 2, name: "Camdyn Savings", type: "savings", balance: 34668.00, owner_id: 1},
         {id: 3, name: "EMERGENCY FUND", type: "savings", balance: 3450.45, owner_id: 1}
     ]
-
     const [formData, setFormdata] = useState({
         amount: 0.00,
         accountId: accounts[0].id,
@@ -37,8 +36,12 @@ const DepositPage = () => {
         console.log(formData)
         postDeposit(formData)
             .catch(error => setErrors(error))
-        setSubmitted(submitted => !submitted)
-        console.log("Errors:", errors)
+        
+        if(errors.length === 0) {
+            setSubmitted(submitted => true)
+        } else {
+            console.log("Errors:", errors)
+        }
     }
 
     // TODO: Get real account list
@@ -64,7 +67,7 @@ const DepositPage = () => {
                     <input type="number" id="amount" value={formData.amount} min="0" onChange={handleAmountChange} />
                 </div>
                 <div>
-                    <button type="submit" name="submit-deposit" >Submit Deposit</button>
+                    <button type="submit" name="submit-deposit" disabled={submitted}>Submit Deposit</button>
                 </div>
             </form>
             <div display="block">
