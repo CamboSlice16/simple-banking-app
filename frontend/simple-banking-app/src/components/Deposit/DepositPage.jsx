@@ -7,30 +7,32 @@ import { useNavigate } from 'react-router-dom'
 import { postDeposit } from '../../api/TransactionApiService'
 
 const DepositPage = () => {
-    const [amount] = useState(0.00)
-    const [accountId] = useState(0)
+    const [formData, setFormdata] = useState({
+        amount: 0.00,
+        accountId: 0,
+    })
     const [submitted, setSubmitted] = useState(false)
     const navigate = useNavigate()
 
-    console.log("Submitted: ", submitted)
+    const handleAccountChange = (event) => {
+        setFormdata((prevState) => ({ ...prevState, accountId: event.target.value}))
+    }
+
+    const handleAmountChange = (event) => {
+        setFormdata((prevState) => ({ ...prevState, amount: event.target.value}))
+    }
 
     const handleGoBack = () => navigate(HOME_PAGE_URL)
 
-    const handleSubmit = () => {
-        // postDeposit(amount, accountId)
-
-        console.log("Deposit successful!")
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(formData)
+        postDeposit(formData)
+            .catch(error => console.log(error))
         setSubmitted(submitted => !submitted)
     }
 
-    const onSubmit = (values) => {
-        postDeposit(values.amount, values.accountId)
-            .then(response => console.log(values))
-            .catch(error => console.log(error))
-    }
-
     // Dummy data
-    const userId = 1
     var accounts = [
         {id: 1, name: "Camdyn Checking", type: "checking", balance: 1500.58, owner_id: 1},
         {id: 2, name: "Camdyn Savings", type: "savings", balance: 34668.00, owner_id: 1},
@@ -43,10 +45,10 @@ const DepositPage = () => {
     return (
         <div>
             <h1>Deposit Form</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="account">Select Account:</label>
-                    <select id="account">
+                    <select id="account" onChange={handleAccountChange}>
                     {
                         accounts.map(
                             account => (
@@ -58,10 +60,10 @@ const DepositPage = () => {
                 </div>
                 <div>
                     <label htmlFor="amount">Amount</label>
-                    <input type="number" id="amount" />
+                    <input type="number" id="amount" value={formData.amount} onChange={handleAmountChange} />
                 </div>
                 <div>
-                    <button type="submit" name="submit-deposit">Submit Deposit</button>
+                    <button type="submit" name="submit-deposit" >Submit Deposit</button>
                 </div>
             </form>
             <div display="block">

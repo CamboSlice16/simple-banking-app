@@ -1,8 +1,7 @@
-import axios from 'axios'
 import apiClient from './ApiClientService'
 
 // Transactions
-export const postDeposit = (amount, accountId) => apiClient.post(`transaction/deposit`)
+export const postDeposit = (transaction) => apiClient.post(`transaction/deposit`, transaction)
 export const postWithdrawal = (amount, accountId) => apiClient.post(`transaction/withdrawal`)
 export const postTransfer = (amount, accountFrom, accountTo) => apiClient.post(`transaction/transfer`)
 

@@ -2,7 +2,6 @@ import './BankingApp.css'
 
 import * as Constants from '../../common/Constants'
 import HeaderComponent from '../../common/Header/HeaderComponent'
-import FooterComponent from '../../common/Footer/FooterComponent'
 
 import AuthProvider, { useAuth } from '../security/AuthContext'
 import DepositPage from '../Deposit/DepositPage'
@@ -37,7 +36,6 @@ const BankingApp = () => {
                         <AuthProvider> <TransferPage /> </AuthProvider>
                     } />
                 </Routes>
-                <FooterComponent />
             </BrowserRouter>
         </div>
     )

@@ -15,10 +15,4 @@ public class ErrorResponseExceptionHandler extends ResponseEntityExceptionHandle
         ApiError error = new ApiError(ex.getMessage(), req.getDescription(false));
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-    // @ExceptionHandler(UserNotFoundException.class)
-    // public final ResponseEntity<ApiError> handleUserNotFoundException(Exception ex, WebRequest req) {
-    //     ApiError error = new ApiError(ex.getMessage(), req.getDescription(false));
-    //     return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-    // }
 }
