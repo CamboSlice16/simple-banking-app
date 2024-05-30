@@ -42,7 +42,13 @@ const HomePage = () => {
                 <div className="btn-group">
                     <button name="deposit" type="button" onClick={handleDeposit}>Deposit</button>
                     <button name="withdrawal" type="button" onClick={handleWithdrawal}>Withdrawal</button>
-                    <button name="transfer" type="button" onClick={handleTransfer}>Transfer</button>
+                    <button name="transfer"
+                            type="button"
+                            onClick={handleTransfer}
+                            disabled={accounts.length > 1 ? false : true}
+                    >
+                        Transfer
+                    </button>
                 </div>
             </div>
         </div>
