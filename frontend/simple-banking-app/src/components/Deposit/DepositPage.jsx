@@ -2,22 +2,31 @@ import './DepositPage.css'
 
 import { HOME_PAGE_URL } from '../../common/Constants'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { postDeposit } from '../../api/TransactionApiService'
 
 const DepositPage = () => {
-    const [amount, setAmount] = useState('0.00')
+    const [amount] = useState(0.00)
+    const [accountId] = useState(0)
     const [submitted, setSubmitted] = useState(false)
     const navigate = useNavigate()
 
     console.log("Submitted: ", submitted)
 
-    const handleAmountChange = (event) => setAmount(event.target.value)
     const handleGoBack = () => navigate(HOME_PAGE_URL)
 
     const handleSubmit = () => {
+        // postDeposit(amount, accountId)
+
         console.log("Deposit successful!")
         setSubmitted(submitted => !submitted)
+    }
+
+    const onSubmit = (values) => {
+        postDeposit(values.amount, values.accountId)
+            .then(response => console.log(values))
+            .catch(error => console.log(error))
     }
 
     // Dummy data
@@ -41,7 +50,7 @@ const DepositPage = () => {
                     {
                         accounts.map(
                             account => (
-                                <option value={account.id}>{account.name}</option>
+                                <option key={account.id} value={account.id}>{account.name}</option>
                             )
                         )
                     }
@@ -49,14 +58,14 @@ const DepositPage = () => {
                 </div>
                 <div>
                     <label htmlFor="amount">Amount</label>
-                    <input type="number" id="amount" value={amount} onChange={handleAmountChange} />
+                    <input type="number" id="amount" />
                 </div>
                 <div>
-                    <button type="button" name="submit-deposit" onClick={handleSubmit}>Submit Deposit</button>
+                    <button type="submit" name="submit-deposit">Submit Deposit</button>
                 </div>
             </form>
             <div display="block">
-                {submitted == true ? <h2>Deposit processed!</h2> : ""}
+                {submitted === true ? <h2>Deposit processed!</h2> : ""}
                 <button type="button" name="go-back" onClick={handleGoBack}>Go Back</button>
             </div>
         </div>

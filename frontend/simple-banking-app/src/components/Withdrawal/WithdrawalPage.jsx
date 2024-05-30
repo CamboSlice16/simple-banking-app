@@ -41,7 +41,7 @@ const WithdrawalPage = () => {
                     {
                         accounts.map(
                             account => (
-                                <option value={account.id}>{account.name}</option>
+                                <option key={account.id} value={account.id}>{account.name}</option>
                             )
                         )
                     }
@@ -56,7 +56,7 @@ const WithdrawalPage = () => {
                 </div>
             </form>
             <div display="block">
-                {submitted == true ? <h2>Withdrawal processed!</h2> : ""}
+                {submitted === true ? <h2>Withdrawal processed!</h2> : ""}
                 <button type="button" name="go-back" onClick={handleGoBack}>Go Back</button>
             </div>
         </div>

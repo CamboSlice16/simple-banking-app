@@ -3,10 +3,11 @@ import './HomePage.css'
 import {
     DEPOSIT_PAGE_URL,
     WITHDRAWAL_PAGE_URL,
-    TRANSFER_PAGE_URL
+    TRANSFER_PAGE_URL,
+    ACCOUNT_PAGE_URL
 } from '../../common/Constants'
 
-import { getAccountsForUser } from '../../api/TransactionApiService'
+import { getAccountsForUser, getAccountsForUser2 } from '../../api/TransactionApiService'
 import ListAccountComponent from '../../common/ListAccountsComponent'
 
 import { useEffect, useState } from 'react'
@@ -33,6 +34,7 @@ const HomePage = () => {
             .then((response) => setAccounts(response.data))
             .catch((error) => console.log(error))
     }, [username])
+    console.log(accounts)
 
     // TODO: Get real account data
     // TODO: Get real User ID
