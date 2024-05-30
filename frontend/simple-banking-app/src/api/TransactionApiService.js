@@ -2,8 +2,8 @@ import apiClient from './ApiClientService'
 
 // Transactions
 export const postDeposit = (transaction) => apiClient.post(`transaction/deposit`, transaction)
-export const postWithdrawal = (amount, accountId) => apiClient.post(`transaction/withdrawal`)
-export const postTransfer = (amount, accountFrom, accountTo) => apiClient.post(`transaction/transfer`)
+export const postWithdrawal = (transaction) => apiClient.post(`transaction/withdrawal`, transaction)
+export const postTransfer = (transaction) => apiClient.post(`transaction/transfer`, transaction)
 
 // Accounts
 export const getAccountsForUser = (username) => apiClient.get(`/accounts/${username}`)

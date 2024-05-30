@@ -9,7 +9,7 @@ CREATE TABLE users (
     first_name VARCHAR(255) NOT NULL DEFAULT '',
     last_name VARCHAR(255) NOT NULL DEFAULT '',
     PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE accounts (
     id BIGINT AUTO_INCREMENT,

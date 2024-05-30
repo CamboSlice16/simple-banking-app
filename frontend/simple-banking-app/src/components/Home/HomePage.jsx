@@ -4,10 +4,9 @@ import {
     DEPOSIT_PAGE_URL,
     WITHDRAWAL_PAGE_URL,
     TRANSFER_PAGE_URL,
-    ACCOUNT_PAGE_URL
 } from '../../common/Constants'
 
-import { getAccountsForUser, getAccountsForUser2 } from '../../api/TransactionApiService'
+import { getAccountsForUser } from '../../api/TransactionApiService'
 import ListAccountComponent from '../../common/ListAccountsComponent'
 
 import { useEffect, useState } from 'react'
@@ -23,20 +22,13 @@ const HomePage = () => {
 
     // Dummy data
     const username = "cam_ash"
-    // var accounts = [
-    //     {id: 1, name: "Camdyn Checking", type: "checking", balance: 1500.58, owner_id: 1},
-    //     {id: 2, name: "Camdyn Savings", type: "savings", balance: 34668.00, owner_id: 1},
-    //     {id: 3, name: "EMERGENCY FUND", type: "savings", balance: 3450.45, owner_id: 1}
-    // ]
 
     useEffect(() => {
         getAccountsForUser(username)
             .then((response) => setAccounts(response.data))
             .catch((error) => console.log(error))
     }, [username])
-    console.log(accounts)
 
-    // TODO: Get real account data
     // TODO: Get real User ID
 
     return (

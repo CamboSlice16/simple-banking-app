@@ -7,11 +7,19 @@ import { useNavigate } from 'react-router-dom'
 import { postDeposit } from '../../api/TransactionApiService'
 
 const DepositPage = () => {
+    // Dummy data
+    var accounts = [
+        {id: 1, name: "Camdyn Checking", type: "checking", balance: 1500.58, owner_id: 1},
+        {id: 2, name: "Camdyn Savings", type: "savings", balance: 34668.00, owner_id: 1},
+        {id: 3, name: "EMERGENCY FUND", type: "savings", balance: 3450.45, owner_id: 1}
+    ]
+
     const [formData, setFormdata] = useState({
         amount: 0.00,
-        accountId: 0,
+        accountId: accounts[0].id,
     })
     const [submitted, setSubmitted] = useState(false)
+    const [errors, setErrors] = useState([])
     const navigate = useNavigate()
 
     const handleAccountChange = (event) => {
@@ -28,19 +36,12 @@ const DepositPage = () => {
         event.preventDefault()
         console.log(formData)
         postDeposit(formData)
-            .catch(error => console.log(error))
+            .catch(error => setErrors(error))
         setSubmitted(submitted => !submitted)
+        console.log("Errors:", errors)
     }
 
-    // Dummy data
-    var accounts = [
-        {id: 1, name: "Camdyn Checking", type: "checking", balance: 1500.58, owner_id: 1},
-        {id: 2, name: "Camdyn Savings", type: "savings", balance: 34668.00, owner_id: 1},
-        {id: 3, name: "EMERGENCY FUND", type: "savings", balance: 3450.45, owner_id: 1}
-    ]
-
     // TODO: Get real account list
-    // TODO: POST request for deposit
 
     return (
         <div>
@@ -60,7 +61,7 @@ const DepositPage = () => {
                 </div>
                 <div>
                     <label htmlFor="amount">Amount</label>
-                    <input type="number" id="amount" value={formData.amount} onChange={handleAmountChange} />
+                    <input type="number" id="amount" value={formData.amount} min="0" onChange={handleAmountChange} />
                 </div>
                 <div>
                     <button type="submit" name="submit-deposit" >Submit Deposit</button>
