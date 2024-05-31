@@ -1,4 +1,4 @@
-import './WithdrawalPage.css'
+import '../../common/style/TransactionForms.css'
 
 import { HOME_PAGE_URL } from '../../common/Constants'
 
@@ -51,7 +51,7 @@ const WithdrawalPage = () => {
     return (
         <div>
             <h1>Withdrawal Form</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="transaction" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="account">Select Account:</label>
                     <select id="account" onChange={handleAccountChange}>

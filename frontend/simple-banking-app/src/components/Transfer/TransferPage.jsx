@@ -1,4 +1,4 @@
-import './TransferPage.css'
+import '../../common/style/TransactionForms.css'
 
 import { HOME_PAGE_URL } from '../../common/Constants'
 
@@ -54,7 +54,7 @@ const TransferPage = () => {
     return (
         <div>
             <h1>Transfer Form</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="transaction" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="accountTo">Transfer To:</label>
                     <select id="accountTo" onChange={handleAccountToChange}>

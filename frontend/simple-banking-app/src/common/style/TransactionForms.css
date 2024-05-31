@@ -1,0 +1,17 @@
+.transaction div {
+    padding-bottom: 20px;
+}
+
+.transaction input, select {
+    height: 35px;
+    width: 200px;
+}
+
+.transaction label {
+    padding-right: 10px;
+}
+
+.transaction button {
+    height: 40px;
+    width: 150px;
+}
