@@ -57,7 +57,7 @@ public class AccountsController {
         }
     }
     
-    @GetMapping("/accounts/{id}")
+    @GetMapping("/details/{id}")
     public List<Transaction> getTransactions(@PathVariable long id) {
         return transactionRepo.findByAccountId(id);
     }

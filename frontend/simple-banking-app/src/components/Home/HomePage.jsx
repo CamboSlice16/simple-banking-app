@@ -23,16 +23,11 @@ const HomePage = () => {
     const handleWithdrawal = () => navigate(WITHDRAWAL_PAGE_URL)
     const handleTransfer = () => navigate(TRANSFER_PAGE_URL)
 
-    // Dummy data
-    // const username = "cam_ash"
-
     useEffect(() => {
         getAccountsForUser(username)
             .then((response) => setAccounts(response.data))
             .catch((error) => console.log(error))
     }, [username])
-
-    // TODO: Get real User ID
 
     return (
         <div>

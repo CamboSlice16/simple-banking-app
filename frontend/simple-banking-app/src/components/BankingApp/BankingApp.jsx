@@ -8,10 +8,11 @@ import DepositPage from '../Deposit/DepositPage'
 import HomePage from '../Home/HomePage'
 import LoginPage from '../Login/LoginPage'
 import LogoutPage from '../Logout/LogoutPage'
-
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import WithdrawalPage from '../Withdrawal/WithdrawalPage'
 import TransferPage from '../Transfer/TransferPage'
+import AccountDetailsPage from '../AccountDetails/AccountDetailsPage'
+
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 const AuthenticatedRoute = ({ children }) => {
     const authContext = useAuth()
@@ -24,6 +25,8 @@ const AuthenticatedRoute = ({ children }) => {
 }
 
 const BankingApp = () => {
+    const accountDetailsUrl = `${Constants.ACCOUNT_PAGE_URL}/:accountId`
+
     return (
         <div className="app">
             <AuthProvider>
@@ -45,6 +48,9 @@ const BankingApp = () => {
                         } />
                         <Route path={Constants.TRANSFER_PAGE_URL} element={
                             <AuthenticatedRoute> <TransferPage /> </AuthenticatedRoute>
+                        } />
+                        <Route path={accountDetailsUrl} element={ 
+                            <AuthenticatedRoute> <AccountDetailsPage /> </AuthenticatedRoute>
                         } />
                     </Routes>
                 </BrowserRouter>

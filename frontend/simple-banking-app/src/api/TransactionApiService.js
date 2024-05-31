@@ -7,4 +7,4 @@ export const postTransfer = (transaction) => apiClient.post(`transaction/transfe
 
 // Accounts
 export const getAccountsForUser = (username) => apiClient.get(`/accounts/${username}`)
-export const getTransactionsForAccount = (accountId) => apiClient.get(`accounts/${accountId}`)
+export const getTransactionsForAccount = (accountId) => apiClient.get(`accounts/details/${accountId}`)

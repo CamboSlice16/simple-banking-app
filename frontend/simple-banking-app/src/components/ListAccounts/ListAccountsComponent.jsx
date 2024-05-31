@@ -1,11 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import './ListAccountsComponent.css'
+import { ACCOUNT_PAGE_URL } from '../../common/Constants';
 
 // Lists Accounts for the logged in user
 // Located on Home Page
 
-// TODO: Styling!
-
 const ListAccountComponent = ({accounts}) => {
+    // const navigate = useNavigate()
+
+    // const handleRowClick = (id) => {
+    //     console.log(id)
+    //     // navigate(`${ACCOUNT_PAGE_URL}/${id}`)
+    // }
+
     return (
         <div className="accounts">
             <table>

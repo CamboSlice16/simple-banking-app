@@ -1,0 +1,33 @@
+.tables {
+    border-collapse: collapse;
+}
+
+.tables table {
+    width: 70%;
+    position: relative;
+    left: 15%;
+}
+
+.tables td {
+    border: 1px solid #ddd;
+    padding: 40px 8px 40px 8px;
+    text-align: left;
+}
+
+.tables th {
+    padding: 50px 8px 30px 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    background-color: #1663d6;
+    color: white;
+}
+
+.go-back {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.go-back button {
+    height: 40px;
+    width: 150px;
+}
