@@ -4,7 +4,7 @@ USE banking_database;
 
 CREATE TABLE users (
     id BIGINT AUTO_INCREMENT,
-    username VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL DEFAULT 'TempPassword0',
     first_name VARCHAR(255) NOT NULL DEFAULT '',
     last_name VARCHAR(255) NOT NULL DEFAULT '',
@@ -13,6 +13,7 @@ CREATE TABLE users (
 
 CREATE TABLE accounts (
     id BIGINT AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
     type ENUM('checking', 'savings', 'credit') NOT NULL DEFAULT 'checking',
     balance DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
     owner_id BIGINT NOT NULL,
@@ -33,9 +34,9 @@ CREATE TABLE transactions (
 
 INSERT INTO users (username, password, first_name, last_name) VALUES ('cam_ash', 'pa$$w0rd', 'Camdyn', 'Ashcraft');
 
-INSERT INTO accounts (type, balance, owner_id) VALUES ('checking', 1500.58, '1');
-INSERT INTO accounts (type, balance, owner_id) VALUES ('savings', 34668.02, '1');
-INSERT INTO accounts (type, balance, owner_id) VALUES ('savings', 3450.45, '1');
+INSERT INTO accounts (name, type, balance, owner_id) VALUES ("Camdyn's Checking", 'checking', 1500.58, '1');
+INSERT INTO accounts (name, type, balance, owner_id) VALUES ("Camdyn's Savings", 'savings', 34668.02, '1');
+INSERT INTO accounts (name, type, balance, owner_id) VALUES ("EMERGENCY FUND", 'savings', 3450.45, '1');
 
 INSERT INTO transactions (type, amount, account_id) VALUE ('deposit', 1500.00, 3);
 INSERT INTO transactions (type, amount, account_id) VALUE ('withdrawal', 215.45, 1);

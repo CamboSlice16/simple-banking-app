@@ -1,3 +1,5 @@
+import './ListAccountsComponent.css'
+
 // Lists Accounts for the logged in user
 // Located on Home Page
 
@@ -5,7 +7,7 @@
 
 const ListAccountComponent = ({accounts}) => {
     return (
-        <div>
+        <div className="accounts">
             <table>
                 <thead>
                     <tr>

@@ -1,5 +1,7 @@
 .btn-group {
     display: inline-block;
+    position: relative;
+    right: 60%;
 }
 
 .btn-group button {
@@ -11,6 +13,14 @@
     margin-left: 500px;
 }
 
-.tbl-group {
-    margin: auto;
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+}
+
+.flex-child:first-child {
+    margin-right: 20px;
 }

@@ -7,13 +7,16 @@ import {
 } from '../../common/Constants'
 
 import { getAccountsForUser } from '../../api/TransactionApiService'
-import ListAccountComponent from '../../common/ListAccountsComponent'
+import ListAccountComponent from '../ListAccounts/ListAccountsComponent'
 
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../security/AuthContext'
 
 const HomePage = () => {
     const [accounts, setAccounts] = useState([])
+    const authContext = useAuth()
+    const username = authContext.username
     const navigate = useNavigate()
 
     const handleDeposit = () => navigate(DEPOSIT_PAGE_URL)
@@ -21,7 +24,7 @@ const HomePage = () => {
     const handleTransfer = () => navigate(TRANSFER_PAGE_URL)
 
     // Dummy data
-    const username = "cam_ash"
+    // const username = "cam_ash"
 
     useEffect(() => {
         getAccountsForUser(username)
@@ -34,22 +37,27 @@ const HomePage = () => {
     return (
         <div>
             <h1>Welcome!</h1>
-            <div>
-                <div className="tbl-group">
+            <div className="flex-container">
+                <div className="flex-child">
                 { accounts.length === 0 ? "You don't have any accounts open." :
                 <ListAccountComponent accounts={accounts} />}
                 </div>
-                <div className="btn-group">
-                    <button name="deposit" type="button" onClick={handleDeposit}>Deposit</button>
-                    <button name="withdrawal" type="button" onClick={handleWithdrawal}>Withdrawal</button>
-                    <button name="transfer"
-                            type="button"
-                            onClick={handleTransfer}
-                            disabled={accounts.length > 1 ? false : true}
-                    >
-                        Transfer
-                    </button>
+                <div className="flex-child">
+                    <div className="btn-group">
+                        <button name="deposit" type="button" onClick={handleDeposit}>Deposit</button>
+                        <br />
+                        <button name="withdrawal" type="button" onClick={handleWithdrawal}>Withdrawal</button>
+                        <br />
+                        <button name="transfer"
+                                type="button"
+                                onClick={handleTransfer}
+                                disabled={accounts.length > 1 ? false : true}
+                        >
+                            Transfer
+                        </button>
+                    </div>
                 </div>
+                
             </div>
         </div>
     )

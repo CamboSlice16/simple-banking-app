@@ -15,6 +15,9 @@ public class Account {
     @Column(name="id")
     private long id;
 
+    @Column(name="name")
+    private String name;
+
     @Column(name="type")
     private String type;
 
@@ -26,13 +29,15 @@ public class Account {
 
     // Constructors
 
-    public Account(String type, long owner) {
+    public Account(String name, String type, long owner) {
+        this.name = name;
         this.type = type;
         this.owner = owner;
         this.balance = (float) 0.00;
     }
 
-    public Account(String type, double balance, long owner) {
+    public Account(String name, String type, double balance, long owner) {
+        this.name = name;
         this.type = type;
         this.balance = balance;
         this.owner = owner;
@@ -59,6 +64,10 @@ public class Account {
     public long getId() {
         return id;
     }
+    
+    public String getName() {
+        return name;
+    }
 
     public String getType() {
         return type;
@@ -76,6 +85,10 @@ public class Account {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setType(String type) {

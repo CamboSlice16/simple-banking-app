@@ -5,8 +5,8 @@ export const AuthContext = createContext()
 export const useAuth = () => useContext(AuthContext)
 
 const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setAuthenticated] = useState(false)
-    const [username, setUsername] = useState('')
+    const [isAuthenticated, setAuthenticated] = useState(true)
+    const [username, setUsername] = useState("cam_ash")
 
     const login = (username, password) => {
         if (true) {

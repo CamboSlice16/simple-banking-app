@@ -1,0 +1,15 @@
+.header {
+    background-color: #1663d6;
+    height: 150px;
+    width: 100%;
+}
+
+.title {
+    padding-top: 20px;
+}
+
+.logout button {
+    padding: 5px 10px 5px 10px;
+    height: 40px;
+    width: 100px;
+}

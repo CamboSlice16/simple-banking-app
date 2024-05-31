@@ -3,7 +3,6 @@ package com.camdyn.simplebankingapp.web;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,9 +15,6 @@ import com.camdyn.simplebankingapp.domain.datastructure.Transaction;
 import com.camdyn.simplebankingapp.domain.repo.AccountRepo;
 import com.camdyn.simplebankingapp.domain.repo.TransactionRepo;
 import com.camdyn.simplebankingapp.usecase.Transfer;
-
-
-
 
 @RestController
 @CrossOrigin
@@ -37,7 +33,7 @@ public class TransactionController {
     }
 
     @PostMapping("/deposit")
-    public ResponseEntity postDeposit(@RequestBody Transaction transaction) throws Exception {
+    public ResponseEntity<Account> postDeposit(@RequestBody Transaction transaction) throws Exception {
         // Does the account exist?
         Optional<Account> account = accountRepo.findById(transaction.getAccountId());
         if (account.isEmpty()) {
@@ -52,11 +48,11 @@ public class TransactionController {
         account.get().addBalance(transaction.getAmount());
         accountRepo.save(account.get());
 
-        return ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/withdrawal")
-    public ResponseEntity postWithdrawal(@RequestBody Transaction transaction) throws Exception {
+    public ResponseEntity<Account> postWithdrawal(@RequestBody Transaction transaction) throws Exception {
         // Does the account exist?
         Optional<Account> account = accountRepo.findById(transaction.getAccountId());
         if (account.isEmpty()) {
@@ -71,11 +67,11 @@ public class TransactionController {
         account.get().subtractBalance(transaction.getAmount());
         accountRepo.save(account.get());
 
-        return ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/transfer")
-    public ResponseEntity postTransfer(@RequestBody Transfer transfer) throws Exception {
+    public ResponseEntity<Account> postTransfer(@RequestBody Transfer transfer) throws Exception {
         // Do the accounts exist?
         Optional<Account> account_to = accountRepo.findById(transfer.getAccountTo());
         if (account_to.isEmpty()) {
@@ -109,7 +105,7 @@ public class TransactionController {
         account_from.get().subtractBalance(transfer.getAmount());
         accountRepo.save(account_from.get());
 
-        return ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.ok().build();
     }
     
 }

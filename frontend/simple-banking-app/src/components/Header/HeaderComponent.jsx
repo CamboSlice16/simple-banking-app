@@ -1,9 +1,13 @@
+import './HeaderComponent.css'
+
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../security/AuthContext'
 
 const HeaderComponent = () => {
     // const [isAuthenticated, setAuthentication] = useState(false)
     const navigate = useNavigate()
+    const authContext = useAuth()
 
     const handleLogout = () => {
         console.log("Logged out!")
@@ -16,13 +20,13 @@ const HeaderComponent = () => {
 
     return (
         <header>
-            <div height="300px">
-                <div align="center">
+            <div className="header">
+                <div className="title" align="center">
                     <h1>Simple Banking App</h1>
                 </div>
-                <div align="right">
-                    <button name="login" type="button" onClick={handleLogin}>Log in</button>
-                    <button name="logout" type="button" onClick={handleLogout}>Log out</button>
+                <div className="logout" align="right">
+                    {authContext.isAuthenticated === false ? "" :
+                    <button name="logout" type="button" onClick={handleLogout}>Log out</button>}
                 </div>
             </div>
         </header>
