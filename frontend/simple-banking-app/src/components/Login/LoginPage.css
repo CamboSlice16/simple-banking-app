@@ -1,0 +1,21 @@
+.login div {
+    padding-bottom: 20px;
+}
+
+.login input {
+    height: 35px;
+    width: 200px;
+}
+
+.login label {
+    padding-right: 10px;
+}
+
+.login button {
+    height: 30px;
+    width: 100px;
+}
+
+.form {
+    padding-top: 50px;
+}

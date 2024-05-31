@@ -1,3 +1,5 @@
+import './LoginPage.css'
+
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../security/AuthContext'
@@ -23,9 +25,8 @@ const LoginPage = () => {
     }
 
     return (
-        <div>
-            Login page!
-            <form>
+        <div className="form">
+            <form className="login">
                 <div onSubmit={handleSubmit}>
                     <label>Username</label>
                     <input type="text" name="username" value={username} onChange={handleUsernameChange} />
